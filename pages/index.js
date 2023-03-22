@@ -20,7 +20,9 @@ export default function Home() {
   const sendImage = async () => {
     try {
       const result = await axios.post('http://34.229.143.55:8081/process-image', {image: image, name: "KPUN", surname: "EIEI", numbers: [1,2]}, {
-        'Access-Control-Allow-Origin': "*"
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
       console.log(result.data)
     }
