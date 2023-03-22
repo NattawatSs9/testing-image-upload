@@ -2,6 +2,7 @@ import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
 import react, { useState } from 'react'
+import { headers } from '../next.config'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -18,7 +19,9 @@ export default function Home() {
   }
   const sendImage = async () => {
     try {
-      const result = await axios.post('http://34.229.143.55:8081/', {image: image, name: "KPUN", surname: "EIEI", numbers: [1,2]})
+      const result = await axios.post('http://34.229.143.55:8081/process-image', {image: image, name: "KPUN", surname: "EIEI", numbers: [1,2]}, {
+        'Access-Control-Allow-Origin': "*"
+      })
       console.log(result.data)
     }
     catch(e){
